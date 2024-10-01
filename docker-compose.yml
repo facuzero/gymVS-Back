@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   nestapp:
+    image: victor532/gymback
     ports:
       - '3001:3000'
     env_file:

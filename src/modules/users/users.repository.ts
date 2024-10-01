@@ -15,7 +15,9 @@ export class UsersRepository {
   }
 
   async createUserRepository(user: CreateUserDto) {
-    return await this.usersRepository.create(user);
+    const newUser = await this.usersRepository.create(user);
+    await this.usersRepository.save(newUser);
+    return `Usuario agregado: ${newUser.name}`;
   }
 
   async createClientRepository(user: CreateClientDto) {

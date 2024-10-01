@@ -91,7 +91,7 @@ export class User {
 
   @Column({
     type: 'date',
-    nullable: false,
+    nullable: true,
   })
   subscription: Date;
 }
