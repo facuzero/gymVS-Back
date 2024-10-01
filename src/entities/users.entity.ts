@@ -17,6 +17,7 @@ export class User {
   @Column({
     type: 'varchar',
     length: 50,
+    nullable: true,
   })
   lastName: string;
 
@@ -38,6 +39,9 @@ export class User {
   age: number;
 
   @Column({
+    type: 'decimal',
+    precision: 5,
+    scale: 2,
     nullable: true,
   })
   height: number;
@@ -50,33 +54,33 @@ export class User {
   @Column({
     nullable: true,
   })
-  spinalPathology: string;
+  spinalPathology: boolean;
 
   @Column({
     nullable: true,
   })
-  heartDisease: string;
+  heartDisease: boolean;
 
   @Column({
     nullable: true,
   })
-  recentInjuries: string;
+  recentInjuries: boolean;
 
   @Column({
     nullable: true,
   })
-  practiceSports: string;
+  practiceSports: boolean;
 
   @Column({
     type: 'varchar',
     length: 128,
-    nullable: false,
+    nullable: true,
   })
   password: string;
 
   @Column({
     type: 'varchar',
-    nullable: false,
+    nullable: true,
     default:
       'https://www.shutterstock.com/image-vector/vector-flat-illustration-grayscale-avatar-600nw-2264922221.jpg',
   })
@@ -84,4 +88,10 @@ export class User {
 
   @OneToMany(() => MedicalCondition, (condition) => condition.user) // Relación One-to-Many con la entidad Pending
   medCondition: MedicalCondition[];
+
+  @Column({
+    type: 'date',
+    nullable: false,
+  })
+  subscription: Date;
 }

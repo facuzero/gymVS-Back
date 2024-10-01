@@ -1,4 +1,5 @@
 import { InjectRepository } from '@nestjs/typeorm';
+import { CreateClientDto, CreateUserDto } from 'src/dtos/user.dto';
 import { User } from 'src/entities/users.entity';
 import { Repository } from 'typeorm';
 
@@ -11,5 +12,15 @@ export class UsersRepository {
       take: limit,
       skip: (page - 1) * limit,
     });
+  }
+
+  async createUserRepository(user: CreateUserDto) {
+    return await this.usersRepository.create(user);
+  }
+
+  async createClientRepository(user: CreateClientDto) {
+    const newClient = await this.usersRepository.create(user);
+    await this.usersRepository.save(newClient);
+    return `Nuevo cliente agregado: ${newClient.name}`;
   }
 }
