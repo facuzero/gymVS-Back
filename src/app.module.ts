@@ -5,6 +5,7 @@ import { UsersModule } from './modules/users/users.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import typeOrmConfig from './config/typeorm';
+import { MedicalConditionsModule } from './modules/med conditions/medConditions.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import typeOrmConfig from './config/typeorm';
         configService.get('typeorm'),
     }),
     UsersModule,
+    MedicalConditionsModule,
   ],
 
   controllers: [AppController],

@@ -8,74 +8,40 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({
-    type: 'varchar',
-    length: 50,
-  })
+  @Column({ type: 'varchar', length: 50 })
   name: string;
 
-  @Column({
-    type: 'varchar',
-    length: 50,
-    nullable: true,
-  })
+  @Column({ type: 'varchar', length: 50, nullable: true })
   lastName: string;
 
-  @Column({
-    type: 'varchar',
-    length: 50,
-    nullable: true,
-  })
+  @Column({ type: 'varchar', length: 50, nullable: true })
   address: string;
 
-  @Column({
-    nullable: true,
-  })
+  @Column({ nullable: true })
   phone: number;
 
-  @Column({
-    nullable: true,
-  })
+  @Column({ nullable: true })
   age: number;
 
-  @Column({
-    type: 'decimal',
-    precision: 5,
-    scale: 2,
-    nullable: true,
-  })
+  @Column({ type: 'decimal', precision: 5, scale: 2, nullable: true })
   height: number;
 
-  @Column({
-    nullable: true,
-  })
+  @Column({ nullable: true })
   bloodType: string;
 
-  @Column({
-    nullable: true,
-  })
+  @Column({ nullable: true })
   spinalPathology: boolean;
 
-  @Column({
-    nullable: true,
-  })
+  @Column({ nullable: true })
   heartDisease: boolean;
 
-  @Column({
-    nullable: true,
-  })
+  @Column({ nullable: true })
   recentInjuries: boolean;
 
-  @Column({
-    nullable: true,
-  })
+  @Column({ nullable: true })
   practiceSports: boolean;
 
-  @Column({
-    type: 'varchar',
-    length: 128,
-    nullable: true,
-  })
+  @Column({ type: 'varchar', length: 128, nullable: true })
   password: string;
 
   @Column({
@@ -89,9 +55,9 @@ export class User {
   @OneToMany(() => MedicalCondition, (condition) => condition.user) // Relación One-to-Many con la entidad Pending
   medCondition: MedicalCondition[];
 
-  @Column({
-    type: 'date',
-    nullable: true,
-  })
+  @Column({ type: 'date', nullable: true })
   subscription: Date;
+
+  @Column({ type: 'boolean' })
+  client: boolean;
 }

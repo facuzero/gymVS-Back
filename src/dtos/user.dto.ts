@@ -1,4 +1,4 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional, OmitType } from '@nestjs/swagger';
 import {
   IsBoolean,
   IsNotEmpty,
@@ -25,8 +25,29 @@ export class CreateUserDto {
   @IsString()
   @Length(5)
   password: string;
+
+  @ApiProperty({
+    description: 'Es cliente?',
+    example: false,
+  })
+  @IsNotEmpty()
+  @IsBoolean()
+  client: boolean;
 }
 
+export class LoginUserDto extends OmitType(CreateUserDto, ['name'] as const) {
+  @ApiProperty({
+    description: 'El nombre de usuario para el login',
+    example: 'Victor',
+  })
+  name: string;
+
+  @ApiProperty({
+    description: 'La contraseña para el login',
+    example: 'asd123',
+  })
+  password: string;
+}
 export class CreateClientDto {
   @ApiProperty({
     description: 'El nombre es obligatorio',
@@ -105,12 +126,61 @@ export class CreateClientDto {
   @IsBoolean()
   recentInjuries?: boolean;
 
-  @ApiProperty({
-    description: 'campo practica de deporte es obligatoria',
+  @ApiPropertyOptional({
+    description: 'campo practica de deporte es opcional',
     example: false,
   })
   @IsBoolean()
-  practiceSports: boolean;
+  practiceSports?: boolean;
+
+  @ApiPropertyOptional({
+    description: 'campo opcional',
+    example: false,
+  })
+  @IsBoolean()
+  experiencesDizziness?: boolean;
+
+  @ApiPropertyOptional({
+    description: 'campo opcional',
+    example: false,
+  })
+  @IsBoolean()
+  frequentHeadaches: boolean;
+
+  @ApiPropertyOptional({
+    description: 'campo opcional',
+    example: false,
+  })
+  @IsBoolean()
+  fainting?: boolean;
+
+  @ApiPropertyOptional({
+    description: 'campo opcional',
+    example: false,
+  })
+  @IsBoolean()
+  nosebleeds?: boolean;
+
+  @ApiPropertyOptional({
+    description: 'campo opcional',
+    example: false,
+  })
+  @IsBoolean()
+  jointPain?: boolean;
+
+  @ApiPropertyOptional({
+    description: 'campo opcional',
+    example: false,
+  })
+  @IsBoolean()
+  flatFeet?: boolean;
+
+  @ApiPropertyOptional({
+    description: 'campo opcional',
+    example: false,
+  })
+  @IsBoolean()
+  seizures?: boolean;
 
   @ApiPropertyOptional({
     description: 'La imagen es opcional',
@@ -125,4 +195,12 @@ export class CreateClientDto {
   })
   @IsString()
   subscription: Date;
+
+  @ApiProperty({
+    description: 'Es cliente?',
+    example: true,
+  })
+  @IsNotEmpty()
+  @IsBoolean()
+  client: boolean;
 }

@@ -22,6 +22,6 @@ async function bootstrap() {
       //docExpansion: 'none', // This ensures all tags start collapsed
     },
   });
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();

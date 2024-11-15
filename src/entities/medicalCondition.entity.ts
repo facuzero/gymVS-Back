@@ -11,8 +11,8 @@ import { User } from './users.entity';
   name: 'medicalConditions',
 })
 export class MedicalCondition {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({
     type: 'varchar',
@@ -22,6 +22,6 @@ export class MedicalCondition {
   name: string;
 
   @ManyToOne(() => User, (user) => user.medCondition)
-  @JoinColumn({ name: 'userId' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 }

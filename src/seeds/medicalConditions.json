@@ -1,0 +1,13 @@
+[
+  { "name": "spinalPathology" },
+  { "name": "heartDisease" },
+  { "name": "recentInjuries" },
+  { "name": "practiceSports" },
+  { "name": "experiencesDizziness" },
+  { "name": "frequentHeadaches" },
+  { "name": "fainting" },
+  { "name": "nosebleeds" },
+  { "name": "jointPain" },
+  { "name": "flatFeet" },
+  { "name": "seizures" }
+]
